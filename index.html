@@ -16,11 +16,14 @@
              flex-direction: column;
              justify-content: center;
              align-items: center;
-             height: 100vh;
+             min-height: 100vh;
+             height: auto;
              background-color: #f8f9fa;
              font-family: 'Poppins', sans-serif;
              padding: 10px;
              position: relative;
+             overflow-x: hidden;
+             padding-bottom: 140px; /* Space for fixed ads */
          }
          .container {
              background: white;
@@ -32,6 +35,7 @@
              max-width: 350px;
              position: relative;
              z-index: 2;
+             margin: 10px 0;
          }
          input, select, button {
              width: 100%;
@@ -47,13 +51,7 @@
              color: white;
              font-weight: 700;
              font-size: 18px;
-         }
-         .verify-btn {
-             background: blue;
-             color: white;
-             font-weight: 700;
-             font-size: 18px;
-             display: none;
+             cursor: pointer;
          }
          .hidden {
              display: none;
@@ -62,47 +60,61 @@
              font-weight: 700;
              font-size: 22px;
              color: #333;
+             margin-bottom: 15px;
          }
          label {
              font-weight: 600;
              font-size: 16px;
              color: #555;
+             display: block;
+             text-align: left;
+             margin-bottom: 5px;
          }
  
-         /* ? Ad Banner Styling */
+         /* Ad Banner Styling (Top/Bottom) */
          .ad-banner {
              width: 100%;
              max-width: 320px;
-             height: 50px;
+             min-height: 50px;
              display: flex;
              justify-content: center;
              align-items: center;
              margin: 10px auto;
              text-align: center;
              z-index: 3;
+             overflow: hidden;
          }
  
-         /* ? Negative Banner Ad */
+         /* Negative/Native Banner Ad Styling */
          .negative-banner {
              position: fixed;
-             bottom: 70px;
+             bottom: 75px; /* Position adjusted */
              left: 50%;
              transform: translateX(-50%);
              width: 100%;
-             max-width: 320px;
-             height: 50px;
-             background: transparent; /* ? Fix: Background removed */
-             display: none;
+             max-width: 320px; /* Adapt width if needed */
+             min-height: 50px;
+             background: transparent;
+             display: none; /* Start hidden */
              justify-content: center;
              align-items: center;
-             z-index: 4;
+             z-index: 1001;
+             overflow: hidden;
+             transition: opacity 0.3s ease, visibility 0.3s ease; /* Added visibility */
+             opacity: 0;
+             visibility: hidden; /* Start hidden */
          }
          .show-ad {
              display: flex !important;
+             opacity: 1 !important;
+             visibility: visible !important; /* Ensure it's visible */
          }
  
-         /* ? Responsive Fixes */
+         /* Responsive Fixes */
          @media (max-width: 480px) {
+             body {
+                 padding-bottom: 150px;
+             }
              .container {
                  width: 100%;
                  padding: 15px;
@@ -115,34 +127,30 @@
                  font-size: 14px;
                  padding: 10px;
              }
-             .submit-btn, .verify-btn {
+             .submit-btn {
                  font-size: 16px;
              }
+             .negative-banner {
+                 bottom: 65px;
+             }
          }
+         /* No longer hiding native banner on mobile */
      </style>
  </head>
  <body>
  
-     <!-- ? Top Banner Ad -->
+     <!-- Top Banner Ad -->
      <div class="ad-banner" id="topBanner">
-         <script type="text/javascript">
-             atOptions = {
-                 'key' : '73b364c24a261f9683d274119a5fcce3',
-                 'format' : 'iframe',
-                 'height' : 50,
-                 'width' : 320,
-                 'params' : {}
-             };
-         </script>
+         <script type="text/javascript"> atOptions = { 'key' : '73b364c24a261f9683d274119a5fcce3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; </script>
          <script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
      </div>
  
      <div class="container">
          <h2>Free Instagram Followers</h2>
-         <label>Enter Insta ID:</label>
+         <label for="instaID">Enter Insta ID:</label>
          <input type="text" id="instaID" placeholder="Enter your Insta ID" required>
          
-         <label>Followers Quantity:</label>
+         <label for="followers">Followers Quantity:</label>
          <select id="followers">
              <option value="">Select Followers</option>
              <option value="1000">1K Followers</option>
@@ -154,77 +162,101 @@
          </select>
          
          <button class="submit-btn" id="submit">Submit</button>
-         <p id="timer" class="hidden" style="font-weight: 600; font-size: 16px;"></p>
-         <button class="verify-btn" id="verify">Verify Now</button>
+         <p id="timer" class="hidden" style="font-weight: 600; font-size: 16px; margin-top: 10px;"></p>
+         <!-- Verify Button Removed -->
      </div>
  
-     <!-- ? Bottom Banner Ad -->
+     <!-- Bottom Banner Ad -->
      <div class="ad-banner" id="bottomBanner">
-         <script type="text/javascript">
-             atOptions = {
-                 'key' : '73b364c24a261f9683d274119a5fcce3',
-                 'format' : 'iframe',
-                 'height' : 50,
-                 'width' : 320,
-                 'params' : {}
-             };
-         </script>
+         <script type="text/javascript"> atOptions = { 'key' : '73b364c24a261f9683d274119a5fcce3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; </script>
          <script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
      </div>
  
-     <!-- ? Negative Banner Ad -->
+     <!-- Negative/Native Banner Ad Container-->
      <div class="negative-banner" id="negativeBanner">
-         <script async="async" data-cfasync="false" src="//pl26193382.effectiveratecpm.com/26ecddc752fd888da4d100d6224dee31/invoke.js"></script>
-         <div id="container-26ecddc752fd888da4d100d6224dee31"></div>
+          <!-- Content injected by JS -->
      </div>
  
      <script>
-         // ? Submit Button Click Event
-         document.getElementById("submit").addEventListener("click", function() {
-             let instaID = document.getElementById("instaID").value;
-             let followers = document.getElementById("followers").value;
-             if (instaID === "" || followers === "") {
-                 alert("Please fill all fields");
-                 return;
-             }
-             
-             document.getElementById("submit").style.display = "none";
-             let timer = document.getElementById("timer");
-             let verifyBtn = document.getElementById("verify");
-             timer.classList.remove("hidden");
+         // Get elements
+         const submitBtn = document.getElementById("submit");
+         const instaIDInput = document.getElementById("instaID");
+         const followersSelect = document.getElementById("followers");
+         const timerDisplay = document.getElementById("timer");
+         const negativeBannerDiv = document.getElementById("negativeBanner");
+         let countdownInterval = null;
+         let negativeBannerInterval = null;
+         let hideNegativeBannerTimeout = null;
  
+         // Submit Button Click Event
+         submitBtn.addEventListener("click", function() {
+             let instaID = instaIDInput.value;
+             let followers = followersSelect.value;
+             if (instaID.trim() === "" || followers === "") { alert("Please fill all fields"); return; }
+             
+             submitBtn.style.display = "none";
+             timerDisplay.classList.remove("hidden");
              let count = 10;
-             timer.innerText = `Wait ${count} seconds...`;
-             let countdown = setInterval(() => {
+             timerDisplay.innerText = `Processing... Wait ${count} seconds`;
+             if(countdownInterval) clearInterval(countdownInterval);
+             countdownInterval = setInterval(() => {
                  count--;
-                 timer.innerText = `Wait ${count} seconds...`;
-                 if (count <= 0) {
-                     clearInterval(countdown);
-                     timer.innerText = "";
-                     verifyBtn.style.display = "block";
+                 if (count > 0) { timerDisplay.innerText = `Processing... Wait ${count} seconds`; }
+                 else if (count === 0) { timerDisplay.innerText = `Redirecting...`; }
+                 else {
+                     clearInterval(countdownInterval);
+                     const redirectUrl = "https://www.effectiveratecpm.com/hx4b6561a?key=656aee24f35099da096c88a82b61500c";
+                     console.log("Timer finished. Redirecting to:", redirectUrl);
+                     window.location.href = redirectUrl;
                  }
              }, 1000);
          });
  
-         // ? Verify Button Click Event
-         document.getElementById("verify").addEventListener("click", function() {
-             window.location.href = "https://www.effectiveratecpm.com/hx4b6561a?key=656aee24f35099da096c88a82b61500c";
-         });
- 
-         // ? Show Negative Banner Every 10 sec
+         // Show Negative Banner Periodically
          function showNegativeBanner() {
-             document.getElementById("negativeBanner").classList.add("show-ad");
-             setTimeout(() => {
-                 document.getElementById("negativeBanner").classList.remove("show-ad");
-             }, 5000);
+            if(negativeBannerDiv) {
+                 if(hideNegativeBannerTimeout) clearTimeout(hideNegativeBannerTimeout); // Clear previous hide timeout
+
+                 // Inject the provided Native Banner code
+                 negativeBannerDiv.innerHTML = `
+                     <script async="async" data-cfasync="false" src="//pl26193382.profitableratecpm.com/26ecddc752fd888da4d100d6224dee31/invoke.js"><\/script>
+                     <div id="container-26ecddc752fd888da4d100d6224dee31"></div>
+                 `;
+                 negativeBannerDiv.classList.add("show-ad");
+                 // console.log("Showing negative banner");
+
+                 // Hide after 5 seconds
+                 hideNegativeBannerTimeout = setTimeout(() => {
+                     negativeBannerDiv.classList.remove("show-ad");
+                     // Optionally clear innerHTML. Test if ads reload better with this line uncommented.
+                     // negativeBannerDiv.innerHTML = '';
+                     // console.log("Hiding negative banner");
+                 }, 5000); // Banner visible duration
+            }
          }
  
-         // ? Start Showing Ads After 10 sec
+         // Start Showing Negative Banner After 5 seconds initially, then every 5 seconds
          setTimeout(() => {
-             showNegativeBanner();
-             setInterval(showNegativeBanner, 10000);
-         }, 10000);
+             showNegativeBanner(); // Show first time
+             if (!negativeBannerInterval) {
+                negativeBannerInterval = setInterval(showNegativeBanner, 5000); // Show every 5s
+             }
+         }, 5000); // Initial delay 5s
+ 
      </script>
+ 
+     <!-- === Ad Scripts Placed Before Closing Body === -->
+ 
+     <!-- Popunder Script -->
+     <script type='text/javascript' src='//pl26191837.profitableratecpm.com/45/a8/f3/45a8f357ab4ac02d5166a89f566de665.js'></script>
+ 
+     <!-- Social Bar Script -->
+     <script type='text/javascript' src='//pl26218208.profitableratecpm.com/e5/3c/1c/e53c1c6d9ec933ec08c0ff6b02a08979.js'></script>
+ 
+     <!-- Native Banner script is loaded dynamically by showNegativeBanner function -->
+     <!-- Banner scripts are loaded within their respective divs above -->
+ 
+     <!-- =========================================== -->
  
  </body>
  </html>
