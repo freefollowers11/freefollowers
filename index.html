@@ -1,262 +1,332 @@
+
 <!DOCTYPE html>
- <html lang="en">
- <head>
-     <meta charset="UTF-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-     <title>Free Instagram Followers</title>
-     <style>
-         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-         * {
-             margin: 0;
-             padding: 0;
-             box-sizing: border-box;
-         }
-         body {
-             display: flex;
-             flex-direction: column;
-             justify-content: center;
-             align-items: center;
-             min-height: 100vh;
-             height: auto;
-             background-color: #f8f9fa;
-             font-family: 'Poppins', sans-serif;
-             padding: 10px;
-             position: relative;
-             overflow-x: hidden;
-             padding-bottom: 140px; /* Space for fixed ads */
-         }
-         .container {
-             background: white;
-             padding: 20px;
-             border-radius: 10px;
-             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-             text-align: center;
-             width: 100%;
-             max-width: 350px;
-             position: relative;
-             z-index: 2;
-             margin: 10px 0;
-         }
-         input, select, button {
-             width: 100%;
-             padding: 12px;
-             margin: 10px 0;
-             border: 1px solid #ccc;
-             border-radius: 5px;
-             font-weight: 600;
-             font-size: 16px;
-         }
-         .submit-btn {
-             background: green;
-             color: white;
-             font-weight: 700;
-             font-size: 18px;
-             cursor: pointer;
-         }
-         .hidden {
-             display: none;
-         }
-         h2 {
-             font-weight: 700;
-             font-size: 22px;
-             color: #333;
-             margin-bottom: 15px;
-         }
-         label {
-             font-weight: 600;
-             font-size: 16px;
-             color: #555;
-             display: block;
-             text-align: left;
-             margin-bottom: 5px;
-         }
- 
-         /* Ad Banner Styling (Top/Bottom) */
-         .ad-banner {
-             width: 100%;
-             max-width: 320px;
-             min-height: 50px;
-             display: flex;
-             justify-content: center;
-             align-items: center;
-             margin: 10px auto;
-             text-align: center;
-             z-index: 3;
-             overflow: hidden;
-         }
- 
-         /* Negative/Native Banner Ad Styling */
-         .negative-banner {
-             position: fixed;
-             bottom: 75px; /* Position adjusted */
-             left: 50%;
-             transform: translateX(-50%);
-             width: 100%;
-             max-width: 320px; /* Adapt width if needed */
-             min-height: 50px;
-             background: transparent;
-             display: none; /* Start hidden */
-             justify-content: center;
-             align-items: center;
-             z-index: 1001;
-             overflow: hidden;
-             transition: opacity 0.3s ease, visibility 0.3s ease; /* Added visibility */
-             opacity: 0;
-             visibility: hidden; /* Start hidden */
-         }
-         .show-ad {
-             display: flex !important;
-             opacity: 1 !important;
-             visibility: visible !important; /* Ensure it's visible */
-         }
- 
-         /* Responsive Fixes */
-         @media (max-width: 480px) {
-             body {
-                 padding-bottom: 150px;
-             }
-             .container {
-                 width: 100%;
-                 padding: 15px;
-                 max-width: 95%;
-             }
-             h2 {
-                 font-size: 20px;
-             }
-             input, select, button {
-                 font-size: 14px;
-                 padding: 10px;
-             }
-             .submit-btn {
-                 font-size: 16px;
-             }
-             .negative-banner {
-                 bottom: 65px;
-             }
-         }
-         /* No longer hiding native banner on mobile */
-     </style>
- </head>
- <body>
- 
-     <!-- Top Banner Ad -->
-     <div class="ad-banner" id="topBanner">
-         <script type="text/javascript"> atOptions = { 'key' : '73b364c24a261f9683d274119a5fcce3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; </script>
-         <script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
-     </div>
- 
-     <div class="container">
-         <h2>Free Instagram Followers</h2>
-         <label for="instaID">Enter Insta ID:</label>
-         <input type="text" id="instaID" placeholder="Enter your Insta ID" required>
-         
-         <label for="followers">Followers Quantity:</label>
-         <select id="followers">
-             <option value="">Select Followers</option>
-             <option value="1000">1K Followers</option>
-             <option value="2000">2K Followers</option>
-             <option value="3000">3K Followers</option>
-             <option value="5000">5K Followers</option>
-             <option value="10000">10K Followers</option>
-             <option value="20000">20K Followers</option>
-         </select>
-         
-         <button class="submit-btn" id="submit">Submit</button>
-         <p id="timer" class="hidden" style="font-weight: 600; font-size: 16px; margin-top: 10px;"></p>
-         <!-- Verify Button Removed -->
-     </div>
- 
-     <!-- Bottom Banner Ad -->
-     <div class="ad-banner" id="bottomBanner">
-         <script type="text/javascript"> atOptions = { 'key' : '73b364c24a261f9683d274119a5fcce3', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; </script>
-         <script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
-     </div>
- 
-     <!-- Negative/Native Banner Ad Container-->
-     <div class="negative-banner" id="negativeBanner">
-          <!-- Content injected by JS -->
-     </div>
- 
-     <script>
-         // Get elements
-         const submitBtn = document.getElementById("submit");
-         const instaIDInput = document.getElementById("instaID");
-         const followersSelect = document.getElementById("followers");
-         const timerDisplay = document.getElementById("timer");
-         const negativeBannerDiv = document.getElementById("negativeBanner");
-         let countdownInterval = null;
-         let negativeBannerInterval = null;
-         let hideNegativeBannerTimeout = null;
- 
-         // Submit Button Click Event
-         submitBtn.addEventListener("click", function() {
-             let instaID = instaIDInput.value;
-             let followers = followersSelect.value;
-             if (instaID.trim() === "" || followers === "") { alert("Please fill all fields"); return; }
-             
-             submitBtn.style.display = "none";
-             timerDisplay.classList.remove("hidden");
-             let count = 10;
-             timerDisplay.innerText = `Processing... Wait ${count} seconds`;
-             if(countdownInterval) clearInterval(countdownInterval);
-             countdownInterval = setInterval(() => {
-                 count--;
-                 if (count > 0) { timerDisplay.innerText = `Processing... Wait ${count} seconds`; }
-                 else if (count === 0) { timerDisplay.innerText = `Redirecting...`; }
-                 else {
-                     clearInterval(countdownInterval);
-                     const redirectUrl = "https://www.effectiveratecpm.com/hx4b6561a?key=656aee24f35099da096c88a82b61500c";
-                     console.log("Timer finished. Redirecting to:", redirectUrl);
-                     window.location.href = redirectUrl;
-                 }
-             }, 1000);
-         });
- 
-         // Show Negative Banner Periodically
-         function showNegativeBanner() {
-            if(negativeBannerDiv) {
-                 if(hideNegativeBannerTimeout) clearTimeout(hideNegativeBannerTimeout); // Clear previous hide timeout
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Reward - Please Wait!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a; /* Dark background, will be covered by ads */
+            overflow: hidden; /* Remove scrollbars, page full of ads */
+        }
 
-                 // Inject the provided Native Banner code
-                 negativeBannerDiv.innerHTML = `
-                     <script async="async" data-cfasync="false" src="//pl26193382.profitableratecpm.com/26ecddc752fd888da4d100d6224dee31/invoke.js"><\/script>
-                     <div id="container-26ecddc752fd888da4d100d6224dee31"></div>
-                 `;
-                 negativeBannerDiv.classList.add("show-ad");
-                 // console.log("Showing negative banner");
+        .ad-background-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Responsive grid for ads */
+            gap: 5px; /* Little gap between ads */
+            padding: 5px;
+            box-sizing: border-box;
+            z-index: 1; /* Behind the modal */
+            overflow: auto; /* Allow scrolling within ad container if ads overflow */
+        }
 
-                 // Hide after 5 seconds
-                 hideNegativeBannerTimeout = setTimeout(() => {
-                     negativeBannerDiv.classList.remove("show-ad");
-                     // Optionally clear innerHTML. Test if ads reload better with this line uncommented.
-                     // negativeBannerDiv.innerHTML = '';
-                     // console.log("Hiding negative banner");
-                 }, 5000); // Banner visible duration
+        .ad-slot {
+            background-color: #333; /* Placeholder background */
+            border: 1px dashed #555;
+            color: #888;
+            font-size: 12px;
+            min-height: 250px; /* Default ad height for generic slots */
+            overflow: hidden; /* Prevent ad content from overflowing slot */
+        }
+
+        .ad-slot.banner-320x50 {
+            min-height: 50px;
+            max-height: 50px;
+            width: 320px; /* Fixed width for this ad type */
+            margin: 0 auto; /* Center if grid column is larger */
+        }
+        
+        .ad-slot.native-banner {
+            min-height: 150px; /* Native banners can vary in height */
+            width: 100%; /* Allow native banner to take full width of its grid cell */
+        }
+
+        /* Timer Modal Styles */
+        .timer-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Dark overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000; /* On top of everything */
+            padding: 10px; /* Padding for small screens */
+            box-sizing: border-box;
+        }
+
+        .timer-modal-content {
+            background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Engaging gradient */
+            color: white;
+            padding: 30px 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            text-align: center;
+            animation: popIn 0.5s ease-out, pulseModal 1.5s infinite 0.5s;
+            max-width: 90vw; /* Ensure modal doesn't get too wide on mobile */
+            width: auto; /* Adjust to content */
+            box-sizing: border-box;
+        }
+
+        @keyframes popIn {
+            from { transform: scale(0.5); opacity: 0; }
+            to   { transform: scale(1); opacity: 1; }
+        }
+        
+        @keyframes pulseModal {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+
+        .timer-modal-content h2 {
+            margin-top: 0;
+            font-size: 28px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .timer-modal-content p {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #countdown-timer-display {
+            font-size: 48px;
+            font-weight: bold;
+            color: #fff;
+            display: block;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .reward-text {
+            font-size: 22px;
+            font-weight: bold;
+            color: #333;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 8px 15px;
+            border-radius: 8px;
+            display: inline-block;
+        }
+
+        /* Media Query for smaller screens (e.g., smartphones) */
+        @media (max-width: 480px) {
+            .timer-modal-content {
+                padding: 20px; /* Reduce padding for smaller modals */
             }
-         }
- 
-         // Start Showing Negative Banner After 5 seconds initially, then every 5 seconds
-         setTimeout(() => {
-             showNegativeBanner(); // Show first time
-             if (!negativeBannerInterval) {
-                negativeBannerInterval = setInterval(showNegativeBanner, 5000); // Show every 5s
-             }
-         }, 5000); // Initial delay 5s
- 
-     </script>
- 
-     <!-- === Ad Scripts Placed Before Closing Body === -->
- 
-     <!-- Popunder Script -->
-     <script type='text/javascript' src='//pl26191837.profitableratecpm.com/45/a8/f3/45a8f357ab4ac02d5166a89f566de665.js'></script>
- 
-     <!-- Social Bar Script -->
-     <script type='text/javascript' src='//pl26218208.profitableratecpm.com/e5/3c/1c/e53c1c6d9ec933ec08c0ff6b02a08979.js'></script>
- 
-     <!-- Native Banner script is loaded dynamically by showNegativeBanner function -->
-     <!-- Banner scripts are loaded within their respective divs above -->
- 
-     <!-- =========================================== -->
- 
- </body>
- </html>
+            .timer-modal-content h2 {
+                font-size: 22px; /* Adjust font size */
+            }
+            .timer-modal-content p {
+                font-size: 15px; /* Adjust font size */
+                margin-bottom: 15px;
+            }
+            #countdown-timer-display {
+                font-size: 38px; /* Adjust font size */
+                margin-bottom: 15px;
+            }
+            .reward-text {
+                font-size: 18px; /* Adjust font size */
+                padding: 6px 10px;
+            }
+        }
+        @media (max-width: 359px) { /* Even smaller screens */
+             .timer-modal-content h2 {
+                font-size: 20px; 
+            }
+            .timer-modal-content p {
+                font-size: 14px; 
+            }
+            #countdown-timer-display {
+                font-size: 32px; 
+            }
+            .reward-text {
+                font-size: 16px; 
+            }
+        }
+
+    </style>
+    
+    <!-- ADSTERRA POPUNDER CODE -->
+    <script type='text/javascript' src='//pl26191837.profitableratecpm.com/45/a8/f3/45a8f357ab4ac02d5166a89f566de665.js'></script>
+
+    <!-- ADSTERRA SOCIAL BAR CODE -->
+    <script type='text/javascript' src='//pl26218208.profitableratecpm.com/e5/3c/1c/e53c1c6d9ec933ec08c0ff6b02a08979.js'></script>
+
+</head>
+<body>
+
+    <div class="ad-background-container">
+        
+        <div class="ad-slot banner-320x50">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '73b364c24a261f9683d274119a5fcce3',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+
+        <div class="ad-slot native-banner">
+            <script async="async" data-cfasync="false" src="//pl26193382.profitableratecpm.com/26ecddc752fd888da4d100d6224dee31/invoke.js"></script>
+            <div id="container-26ecddc752fd888da4d100d6224dee31"></div>
+        </div>
+
+        <div class="ad-slot">
+           <script type="text/javascript">
+	atOptions = {
+		'key' : '73b364c24a261f9683d274119a5fcce3',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+        <div class="ad-slot">
+           <script type="text/javascript">
+	atOptions = {
+		'key' : '73b364c24a261f9683d274119a5fcce3',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+
+        <div class="ad-slot banner-320x50">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '73b364c24a261f9683d274119a5fcce3', 
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+
+        <div class="ad-slot native-banner">
+             <script async="async" data-cfasync="false" src="//pl26193382.profitableratecpm.com/26ecddc752fd888da4d100d6224dee31/invoke.js"></script>
+<div id="container-26ecddc752fd888da4d100d6224dee31"></div>
+        </div>
+         <div class="ad-slot">
+           <script type="text/javascript">
+	atOptions = {
+		'key' : '73b364c24a261f9683d274119a5fcce3',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+        <div class="ad-slot">
+            <script type="text/javascript">
+	atOptions = {
+		'key' : '73b364c24a261f9683d274119a5fcce3',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+
+        <div class="ad-slot banner-320x50">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '73b364c24a261f9683d274119a5fcce3', 
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+
+        <div class="ad-slot native-banner">
+            <script async="async" data-cfasync="false" src="//pl26193382.profitableratecpm.com/26ecddc752fd888da4d100d6224dee31/invoke.js"></script>
+<div id="container-26ecddc752fd888da4d100d6224dee31"></div>
+        </div>
+         <div class="ad-slot">
+            <script type="text/javascript">
+	atOptions = {
+		'key' : '73b364c24a261f9683d274119a5fcce3',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+        <div class="ad-slot">
+            <script type="text/javascript">
+	atOptions = {
+		'key' : '73b364c24a261f9683d274119a5fcce3',
+		'format' : 'iframe',
+		'height' : 50,
+		'width' : 320,
+		'params' : {}
+	};
+</script>
+<script type="text/javascript" src="//www.highperformanceformat.com/73b364c24a261f9683d274119a5fcce3/invoke.js"></script>
+        </div>
+    </div>
+
+    <div class="timer-modal-overlay" id="timerModal">
+        <div class="timer-modal-content">
+            <h2>Please Wait!</h2>
+            <p>Your free reward is almost ready.</p>
+            <span id="countdown-timer-display">10</span>
+            <p class="reward-text">Wait <span id="seconds-left-display">10</span> sec to get FREE ?1150</p>
+        </div>
+    </div>
+
+    <script>
+        let timeLeft = 10; 
+        const countdownDisplayElement = document.getElementById('countdown-timer-display');
+        const secondsLeftTextElement = document.getElementById('seconds-left-display');
+        const timerModalElement = document.getElementById('timerModal'); 
+
+        secondsLeftTextElement.textContent = timeLeft;
+        countdownDisplayElement.textContent = timeLeft;
+
+        const timerInterval = setInterval(() => { 
+            timeLeft--;
+            countdownDisplayElement.textContent = timeLeft;
+            secondsLeftTextElement.textContent = timeLeft; 
+
+            if (timeLeft <= 0) {
+                clearInterval(timerInterval);
+                // Open link in a new tab
+                window.open('https://www.profitableratecpm.com/hx4b6561a?key=656aee24f35099da096c88a82b61500c', '_blank'); 
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
